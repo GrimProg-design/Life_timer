@@ -14,22 +14,29 @@ let arr = [];
 let div;
 
 class LiveTimer {
-  // for (let i = 1; i <= age.value; i += 1) {
-  //   div = document.createElement("div");
-  //   arr.push(div);
-  //   div.textContent = i;
-  //   div.className = "age";
-  //   div.id = i + 1 - 1;
-
-  //   mainDiv(div);
-
-  //   if (i <= life.value) {
-  //     livedLife();
-  //   }
-  // }
-  constructor () {
-    this.arr = arr;
+  constructor(div) {
     this.div = div;
+  }
+
+  get loop() {
+    for (let i = 1; i <= age.value * 12; i++) {
+      this.div = document.createElement("div");
+      this.div.textContent = i;
+      this.div.className = "age";
+      this.div.id = i + 1 - 1;
+
+      mainDiv(this.div);
+
+      if (i <= life.value * 12) {
+        this.livedLife(this.div);
+      }
+    }
+  }
+
+  livedLife() {
+    for (let i = 1; i <= life.value; i += 1) {
+      this.div.style.backgroundColor = "green";
+    }
   }
 }
 
@@ -65,19 +72,8 @@ function deleteFunc() {
 function calculator() {
   if (measurement.value === "2") {
     deleteFunc();
-    for (let i = 1; i <= age.value * 12; i += 1) {
-      div = document.createElement("div");
-      arr.push(div);
-      div.textContent = i;
-      div.className = "age";
-      div.id = i + 1 - 1;
-
-      mainDiv(div);
-
-      if (i <= life.value * 12) {
-        livedLife();
-      }
-    }
+    const check = new LiveTimer(div);
+    check.loop;
   } else if (measurement.value === "3") {
     deleteFunc();
     for (let i = 1; i <= (age.value * 365.25) / 7; i += 1) {
@@ -130,10 +126,10 @@ function valueOfAge() {
   calculator();
 
   const ages = document.querySelectorAll(".age");
-  for(let i = 0; i < ages.length; i++){
+  for (let i = 0; i < ages.length; i++) {
     ages[i].addEventListener("click", () => {
       ages[i].style.backgroundColor = "blue";
-    })
+    });
   }
 }
 
