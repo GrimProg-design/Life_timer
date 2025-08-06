@@ -10,28 +10,7 @@ const measurement = document.querySelector("#measurement");
 
 const ageButton = document.querySelector(".age-count-button");
 
-let arr = [];
 let div;
-
-class LiveTimer {
-  // for (let i = 1; i <= age.value; i += 1) {
-  //   div = document.createElement("div");
-  //   arr.push(div);
-  //   div.textContent = i;
-  //   div.className = "age";
-  //   div.id = i + 1 - 1;
-
-  //   mainDiv(div);
-
-  //   if (i <= life.value) {
-  //     livedLife();
-  //   }
-  // }
-  constructor () {
-    this.arr = arr;
-    this.div = div;
-  }
-}
 
 function mainTips(mainDiv) {
   const tips = document.createElement("div");
@@ -67,7 +46,6 @@ function calculator() {
     deleteFunc();
     for (let i = 1; i <= age.value * 12; i += 1) {
       div = document.createElement("div");
-      arr.push(div);
       div.textContent = i;
       div.className = "age";
       div.id = i + 1 - 1;
@@ -82,7 +60,6 @@ function calculator() {
     deleteFunc();
     for (let i = 1; i <= (age.value * 365.25) / 7; i += 1) {
       div = document.createElement("div");
-      arr.push(div);
       div.textContent = i;
       div.className = "age";
       div.id = i + 1 - 1;
@@ -97,7 +74,6 @@ function calculator() {
     deleteFunc();
     for (let i = 1; i <= age.value * 365.25; i += 1) {
       div = document.createElement("div");
-      arr.push(div);
       div.textContent = i;
       div.className = "age";
       div.id = i + 1 - 1;
@@ -115,7 +91,6 @@ function valueOfAge() {
 
   for (let i = 1; i <= age.value; i += 1) {
     div = document.createElement("div");
-    arr.push(div);
     div.textContent = i;
     div.className = "age";
     div.id = i + 1 - 1;
@@ -131,8 +106,11 @@ function valueOfAge() {
 
   const ages = document.querySelectorAll(".age");
   for(let i = 0; i < ages.length; i++){
+    let switchForBlue = true;
     ages[i].addEventListener("click", () => {
-      ages[i].style.backgroundColor = "blue";
+      switchForBlue ? ages[i].style.backgroundColor = "blue" : ages[i].style.backgroundColor = "silver";
+      switchForBlue = !switchForBlue;
+      console.log(switchForBlue)
     })
   }
 }
