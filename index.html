@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Life-time</title>
+    <title>Life-timer</title>
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="content">
-      <h1>Life-time</h1>
+      <h1>Life-timer</h1>
 
       <div class="input-label">
         <label for="measurement">Select a measurement method</label>
@@ -19,14 +19,17 @@
           <option value="3">Weeks</option>
           <option value="4">Days</option>
         </select>
+        <hr>
 
-        <label for="age-count">How long do you think you will live?</label>
+        <label for="age-count">How long do you think you will live? (Choose in measurement)</label>
         <input id="age-count" type="number"/>
+        <hr>
 
-        <label for="lived-age">How long have you lived</label>
+        <label for="lived-age">How long have you lived (in years)</label>
         <input id="lived-age" type="number"/>
         <button type="button" class="age-count-button">Generate</button>
       </div>
+      <hr>
 
       <div class="main-life"></div>
     </div>
