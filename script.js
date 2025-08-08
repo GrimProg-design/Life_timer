@@ -12,9 +12,12 @@ const ageButton = document.querySelector(".age-count-button");
 
 let div;
 
-function mainTips(mainDiv) {
+function mainTips(mainDiv, switchForBlue, div) {
   const tips = document.createElement("div");
+  const writeTips = document.createElement("textarea");
+  writeTips.setAttribute("maxlength", 27)
   tips.className = "tips";
+  tips.appendChild(writeTips);
   mainDiv.appendChild(tips);
 
   div.addEventListener("mouseover", () => {
@@ -24,11 +27,17 @@ function mainTips(mainDiv) {
   div.addEventListener("mouseleave", () => {
     tips.style.display = "none";
   });
+
+  if (switchForBlue) {
+    div.addEventListener("click", () => {
+      writeTips.focus(); 
+    });
+  } 
 }
 
 function mainDiv(div) {
   const mainDiv = document.createElement("div");
-  mainTips(mainDiv);
+  mainTips(mainDiv, true, div);
   mainDiv.className = "main-div";
   mainDiv.appendChild(div);
   ages.appendChild(mainDiv);
@@ -105,13 +114,14 @@ function valueOfAge() {
   calculator();
 
   const ages = document.querySelectorAll(".age");
-  for(let i = 0; i < ages.length; i++){
+  for (let i = 0; i < ages.length; i++) {
     let switchForBlue = true;
     ages[i].addEventListener("click", () => {
-      switchForBlue ? ages[i].style.backgroundColor = "blue" : ages[i].style.backgroundColor = "silver";
+      switchForBlue
+        ? (ages[i].style.backgroundColor = "#a2d6f4")
+        : (ages[i].style.backgroundColor = "silver");
       switchForBlue = !switchForBlue;
-      console.log(switchForBlue)
-    })
+    });
   }
 }
 
